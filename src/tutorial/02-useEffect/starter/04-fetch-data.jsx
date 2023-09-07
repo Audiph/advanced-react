@@ -11,7 +11,7 @@ const FetchData = () => {
       setUsers(list);
     };
     fetchData();
-  }, [users]);
+  }, []);
 
   return (
     <section>
