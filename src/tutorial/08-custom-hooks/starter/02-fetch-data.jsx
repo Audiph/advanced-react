@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useFetchUser } from './custom-hooks';
+import { useFetch } from './custom-hooks';
 const url = 'https://api.github.com/users/QuincyLarson';
 
 const FetchData = () => {
-  const { user, isLoading, isError } = useFetchUser(url);
+  const { data: user, isLoading, isError } = useFetch(url);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
