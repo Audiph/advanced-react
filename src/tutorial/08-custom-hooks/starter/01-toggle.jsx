@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import useToggle from './useToggle';
+import useToggle from './custom-hooks';
 
 const ToggleExample = () => {
   const { show, toggle } = useToggle(false);
