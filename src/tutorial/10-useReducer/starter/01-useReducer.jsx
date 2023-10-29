@@ -5,7 +5,12 @@ const defaultState = {
   people: data,
 };
 
-const reducer = () => {};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'CLEAR_LIST':
+      return { ...state, people: [] };
+  }
+};
 
 const ReducerBasics = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -14,6 +19,12 @@ const ReducerBasics = () => {
     // let newPeople = people.filter((person) => person.id !== id);
     // setPeople(newPeople);
   };
+
+  const clearList = () => {
+    dispatch({ type: 'CLEAR_LIST' });
+  };
+
+  const resetList = () => {};
   return (
     <div>
       {state.people.map((person) => {
@@ -28,7 +39,7 @@ const ReducerBasics = () => {
       <button
         className="btn"
         style={{ marginTop: '2rem' }}
-        // onClick={() => (people.length === 0 ? setPeople(data) : setPeople([]))}
+        onClick={() => (state.people.length === 0 ? resetList() : clearList())}
       >
         {state.people.length === 0 ? 'reset' : 'clear items'}
       </button>
