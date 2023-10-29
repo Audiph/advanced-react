@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import { data } from '../../../data';
+import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from './common';
 
 const defaultState = {
   people: data,
@@ -7,8 +8,11 @@ const defaultState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'CLEAR_LIST':
+    case CLEAR_LIST:
       return { ...state, people: [] };
+
+    case RESET_LIST:
+      return { ...state, people: data };
   }
 };
 
@@ -21,10 +25,12 @@ const ReducerBasics = () => {
   };
 
   const clearList = () => {
-    dispatch({ type: 'CLEAR_LIST' });
+    dispatch({ type: CLEAR_LIST });
   };
 
-  const resetList = () => {};
+  const resetList = () => {
+    dispatch({ type: RESET_LIST });
+  };
   return (
     <div>
       {state.people.map((person) => {
